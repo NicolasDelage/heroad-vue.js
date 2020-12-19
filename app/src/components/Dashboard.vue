@@ -1,5 +1,9 @@
 <template>
-  <div>{{runs}}</div>
+  <div>
+    <ul>
+      <li v-for="run in runs" v-bind:key="run.id">{{run}}</li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -14,7 +18,7 @@ export default {
   },
   mounted() {
     axios.get("http://localhost:8000/api/heroad/run/").then(response  => {
-      this.runs = response
+      this.runs = response.data
       console.log(response)
     });
   }
